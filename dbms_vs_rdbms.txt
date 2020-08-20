@@ -1,0 +1,40 @@
+What is DMBS with example?
+
+Database Management System (DBMS) is a software that is used to define, create and maintain a database and provides controlled access to the data.
+
+							OR
+
+The DBMS manages incoming data, organizes it, and provides ways for the data to be modified or extracted by users or other programs. Some DBMS examples include MySQL, PostgreSQL, Microsoft Access, SQL Server, FileMaker, Oracle, RDBMS, dBASE, Clipper, and FoxPro.
+Relational Database Management System (RDBMS) is an advanced version of a DBMS.
+
+
+DBMS											RDBMS
+
+DBMS stores data as file.					RDBMS stores data in tabular form.
+
+Data elements need to access individually.			Multiple data elements can be accessed at the same time.
+
+No relationship between data.					Data is stored in the form of tables which are related to each other.
+
+Normalization is not present.					Normalization is present.
+
+DBMS does not support distributed database.			RDBMS supports distributed database.
+
+It stores data in either a navigational or hierarchical form.	It uses a tabular structure where the headers are the column names, and the rows 									contain corresponding values.
+
+It deals with small quantity of data.				It deals with large amount of data.
+
+Data redundancy is common in this model.			Keys and indexes do not allow Data redundancy.
+
+It is used for small organization and deal with small data.	It is used to handle large amount of data.
+
+It supports single user.					It supports multiple users.
+
+Data fetching is slower for the large amount of data.		Data fetching is fast because of relational approach.
+
+The data in a DBMS is subject to low security levels with 	There exists multiple levels of data security in a RDBMS.
+regards to data manipulation.	
+
+Low software and hardware necessities.				Higher software and hardware necessities.
+
+Examples: XML, Microsoft Access, etc.				Examples: MySQL, PostgreSQL, SQL Server, Oracle, etc.
