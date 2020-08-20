@@ -1,0 +1,27 @@
+Table 1 shows the relational database with only one relation called STUDENT which stores ROLL_NO, NAME, ADDRESS, PHONE and AGE of students.
+
+STUDENT
+
+ROLL_NO	NAME	ADDRESS	PHONE	AGE
+1	RAM	DELHI	9455123451	18
+2	RAMESH	GURGAON	9652431543	18
+3	SUJIT	ROHTAK	9156253131	20
+4	SURESH	DELHI	9156768971	18
+ TABLE 1
+
+
+These are some important terminologies that are used in terms of relation.
+
+1.) Attribute : Attributes are the properties that define a relation. e.g.; ROLL_NO, NAME etc.
+
+2.) Tuple     : Each row in the relation is known as tuple. The above relation contains 4 tuples.
+
+3.) Degree    : The number of attributes in the relation is known as degree of the relation. 
+	        The STUDENT relation defined above has degree 5.
+
+4.)Cardinality: The number of tuples in a relation is known as cardinality. 
+		The STUDENT relation defined above has cardinality 4.
+
+5.)Column     : Column represents the set of values for a particular attribute. 
+		The column ROLL_NO is extracted from relation STUDENT.
+
