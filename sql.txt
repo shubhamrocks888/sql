@@ -6,6 +6,10 @@ SQL stands for Structured Query Language
 SQL lets you access and manipulate databases
 
 
+Keep in Mind That...
+->SQL keywords are NOT case sensitive: select is the same as SELECT
+
+
 Using SQL in Your Web Site
 To build a web site that shows data from a database, you will need:
 
