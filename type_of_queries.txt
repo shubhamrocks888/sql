@@ -1,0 +1,14 @@
+The queries to deal with relational database can be categories as:
+
+1.)Data Definition Language	: It is used to define the structure of the database. 
+			  	  e.g; CREATE TABLE, ADD COLUMN, DROP COLUMN and so on.
+
+
+2.)Data Manipulation Language	: It is used to manipulate data in the relations. 
+				  e.g.; INSERT, DELETE, UPDATE and so on.
+
+
+3.)Data Query Language		: It is used to extract the data from the relations. 
+				  e.g.; SELECT,WHERE,ORDER BY,GROUP BY etc..
+
+
