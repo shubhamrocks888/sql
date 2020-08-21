@@ -1,0 +1,70 @@
+#SQL EXISTS Operator
+
+->The EXISTS operator is used to test for the existence of any record in a subquery.
+->The EXISTS operator returns true if the subquery returns one or more records.
+
+EXISTS Syntax:
+SELECT column_name(s)
+FROM table_name
+WHERE EXISTS
+(SELECT column_name FROM table_name WHERE condition);
+
+#SQL EXISTS Examples
+The following SQL statement returns TRUE and lists the suppliers with a product price less than 20:
+
+Example:
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price < 20);
+
+
+#The following SQL statement returns TRUE and lists the suppliers with a product price equal to 22:
+
+Example
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price = 22);
+
+
+					#Queries
+
+1.Using EXISTS condition with SELECT statement
+To fetch the first and last name of the customers who placed atleast one order.
+
+
+SELECT fname, lname 
+FROM Customers 
+WHERE EXISTS (SELECT * 
+              FROM Orders 
+              WHERE Customers.customer_id = Orders.c_id);
+
+
+2.Using NOT with EXISTS
+Fetch last and first name of the customers who has not placed any order.
+
+SELECT lname, fname
+FROM Customer
+WHERE NOT EXISTS (SELECT * 
+                  FROM Orders 
+                  WHERE Customers.customer_id = Orders.c_id);
+
+
+3.Using EXISTS condition with DELETE statement
+Delete the record of all the customer from Order Table whose last name is ‘Mehra’.
+DELETE 
+FROM Orders
+WHERE EXISTS (SELECT *
+              FROM customers
+              WHERE Customers.customer_id = Orders.cid
+              AND Customers.lname = 'Mehra');
+
+
+4.Using EXISTS condition with UPDATE statement
+Update the lname as ‘Kumari’ of customer in Customer Table whose customer_id is 401.
+UPDATE Customers
+SET lname = 'Kumari'
+WHERE EXISTS (SELECT *
+              FROM Customers
+              WHERE customer_id = 401);
+
+
