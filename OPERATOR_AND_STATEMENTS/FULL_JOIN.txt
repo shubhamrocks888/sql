@@ -1,0 +1,46 @@
+#SQL FULL OUTER JOIN Keyword
+
+->The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) or right (table2) table records.
+
+Note: FULL OUTER JOIN can potentially return very large result-sets!
+
+Tip: FULL OUTER JOIN and FULL JOIN are the same.
+
+#FULL OUTER JOIN Syntax
+SELECT column_name(s)
+FROM table1
+FULL OUTER JOIN table2
+ON table1.column_name = table2.column_name
+WHERE condition;
+
+
+#SQL FULL OUTER JOIN Example:
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+FULL OUTER JOIN Orders ON Customers.CustomerID=Orders.CustomerID
+ORDER BY Customers.CustomerName;
+
+
+Note: 
+The FULL OUTER JOIN keyword returns all matching records from both tables whether the other table matches or not. 
+So, if there are rows in "Customers" that do not have matches in "Orders", 
+or if there are rows in "Orders" that do not have matches in "Customers",
+those rows will be listed as well.
+
+
+#FULL JOIN: 
+FULL JOIN creates the result-set by combining result of both LEFT JOIN and RIGHT JOIN. 
+The result-set will contain all the rows from both the tables. 
+The rows for which there is no matching, the result-set will contain NULL values.
+
+
+Syntax:
+SELECT table1.column1,table1.column2,table2.column1,....
+FROM table1 
+FULL JOIN table2
+ON table1.matching_column = table2.matching_column;
+
+
+table1: First table.
+table2: Second table
+matching_column: Column common to both the tables.
