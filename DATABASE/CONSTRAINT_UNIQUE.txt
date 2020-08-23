@@ -1,0 +1,145 @@
+#SQL UNIQUE Constraint
+
+->The UNIQUE constraint ensures that all values in a column are different.
+->Both the UNIQUE and PRIMARY KEY constraints provide a guarantee for uniqueness for a column or set of columns.
+->A PRIMARY KEY constraint automatically has a UNIQUE constraint.
+->However, you can have many UNIQUE constraints per table, but only one PRIMARY KEY constraint per table.
+
+
+#SQL UNIQUE Constraint on CREATE TABLE
+The following SQL creates a UNIQUE constraint on the "ID" column when the "Persons" table is created:
+
+#SQL Server / Oracle / MS Access:
+CREATE TABLE Persons (
+    ID int NOT NULL UNIQUE,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+
+
+
+#MySQL:
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    UNIQUE (ID)
+);
+
+
+#To name a UNIQUE constraint, and to define a UNIQUE constraint on multiple columns, use the following SQL syntax:
+
+->MySQL / SQL Server / Oracle / MS Access:
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT UC_Person UNIQUE (ID,LastName)
+);
+
+
+#SQL UNIQUE Constraint on ALTER TABLE
+->To create a UNIQUE constraint on the "ID" column when the table is already created, use the following SQL:
+
+#MySQL / SQL Server / Oracle / MS Access:
+ALTER TABLE Persons
+ADD UNIQUE (ID);
+
+
+To name a UNIQUE constraint, and to define a UNIQUE constraint on multiple columns, use the following SQL syntax:
+#MySQL / SQL Server / Oracle / MS Access:
+ALTER TABLE Persons
+ADD CONSTRAINT UC_Person UNIQUE (ID,LastName);
+
+#DROP a UNIQUE Constraint
+->To drop a UNIQUE constraint, use the following SQL:
+
+#MySQL:
+ALTER TABLE Persons
+DROP INDEX UC_Person;
+
+#SQL Server / Oracle / MS Access:
+ALTER TABLE Persons
+DROP CONSTRAINT UC_Person;
+
+
+				#SQL UNIQUE SUB-QUERY
+
+->Unique constraint in SQL is used to check whether the sub query has duplicate tuples in it’s result. 
+->It returns a boolean value indicating the presence/absence of duplicate tuples. 
+->Unique construct returns true only if the sub query has no duplicate tuples, else it return false.
+
+#Important Points:
+
+->Evaluates to true on an empty sub query.
+->Returns true only if there are unique tuples present as the output of the sub query 
+(two tuples are unique if the value of any attribute of the two tuples differ).
+->Returns true if the sub query has two duplicate rows with at least one attribute as NULL.
+
+
+
+#Syntax:
+SELECT table.ID
+FROM  table
+WHERE UNIQUE (SELECT table2.ID
+              FROM table2
+              WHERE table.ID = table2.ID);
+
+
+#Note: 
+During the execution, first the outer query is evaluated to obtain table.ID. Following this, 
+the inner sub query is processed which produces a new relation that contains the output of inner query 
+such that table.ID == table2.ID. If every row in the new relation is unique then unique returns true 
+and the corresponding table.ID is added as a tuple in the output relation produced. However, if every 
+row in the new relation is not unique then unique evaluates to false and the corresponding table.
+ID is not add to the output relation.	
+
+
+Unique applied to a sub query return false if and only if there are two tuples t1 and t2 such that t1 = t2. 
+It considers t1 and t2 to be two different tuple, when unique is applied to a sub query that contains t1 and t2 
+such that t1 = t2 and at least one of the attribute of these tuples contains a NULL value. 
+Unique predicate in this case evaluates to true. This is because, a NULL value in SQL is treated as an unknown 
+value therefore, two NULL values are considered to be distinct.
+
+#Note: The SQL statement without UNIQUE clause can also be written as:
+
+SELECT table.ID
+FROM  table
+WHERE 1 <= (SELECT count(table2.ID)
+              FROM table2
+              WHERE table.ID = table2.ID);
+
+
+
+				#Queries
+
+Example 1: Find all the instructors that taught at most one course in the year 2017.
+Instructor relation:
+
+EMPLOYEEID	NAME	COURSEID	YEAR
+77505		Alan	SC110		2017
+77815		Will	CSE774		2017
+85019		Smith	EE457		2017
+92701		Sam	PYS504		2017
+60215		Harold	HSS103		2016
+77505		Alan	BIO775		2017
+92701		Sam	ECO980		2017
+
+
+
+SQL Query:
+SELECT I.EMPLOYEEID, I.NAME
+FROM Instructor as I
+WHERE UNIQUE (SELECT Inst.EMPLOYEEID
+              FROM Instructor as Inst
+              WHERE I.EMPLOYEEID = Inst.EMPLOYEEID
+                          and Inst.YEAR = 2017);
+Output:
+
+EMPLOYEEID	NAME
+77815		Will
+85019		Smith
+
