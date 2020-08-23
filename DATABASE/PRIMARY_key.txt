@@ -73,8 +73,6 @@ ADD CONSTRAINT PK_Person PRIMARY KEY (ID,LastName);
        been declared to not contain NULL values (when the table was first created).
 
 
-
-
 #DROP a PRIMARY KEY Constraint
 ->To drop a PRIMARY KEY constraint, use the following SQL:
 
