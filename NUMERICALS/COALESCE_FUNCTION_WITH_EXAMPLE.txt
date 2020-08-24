@@ -1,0 +1,69 @@
+#MySQL | COALESCE( ) Function
+
+1.The MySQL COALESCE() function is used for returning the first non-null value in a list of expressions. 
+2.If all the values in the list evaluate to NULL, then the COALESCE() function returns NULL.
+
+3.The COALESCE() function accepts one parameter which is the list which can contain various values. 
+  The value returned by the MySQL COALESCE() function is the first non-null value in a list of expressions 
+  or NULL if all the values in a list are NULL.
+
+#Syntax:
+COALESCE(value_1, value_2, ...., value_n)
+
+#Parameters Used:
+value_1 – It is used to specify the first value in the list.
+
+#Return Value:
+The MySQL COALESCE() function returns the first non-null value in a list of expressions 
+or NULL if all the values in a list are NULL.
+
+#Example-1: Implementing COALESCE() function on a list.
+
+SELECT COALESCE(NULL, 'A', 'B', NULL); 
+Output: A 
+
+
+#Example-2: Implementing COALESCE() function on a list.
+
+SELECT COALESCE('A', NULL, 'B', NULL); 
+Output: A 
+
+#Example-3: Implementing COALESCE() function on a list.
+
+SELECT COALESCE(NULL, NULL,NULL, NULL); 
+Output: NULL 
+
+Que: Find the Name of Employees.
+
+Finding the name of Employees where First Name, Second Name and Last Name is given in table. 
+Some Name is missing such as First Name, Second Name and may be Last Name
+
+Employees –
+
+ID	FNAME	SNAME	LNAME	SALARY
+1	Har	preet	Singh	30000
+2	Ashu	NULL	Rana	50000
+3	NULL	Vinay	Thakur	40000
+4	NULL	ViJay	NULL	10000
+5	NULL	NULL	Rajveer	60000
+6	Manjeet	Singh	NULL	60000
+
+REQUIRED OUTPUT:
+
+ID	NAME
+1	Har	
+2	Ashu	
+3	Vinay	
+4	Vijay	
+5	Rajveer	
+6	Manjeet	
+
+
+Sol:
+
+SELECT ID,COALESCE(FNAME,SNAME,LNAME) AS NAME
+FEOM Employees;
+
+
+
+
