@@ -1,0 +1,27 @@
+Que: Delete duplicate data from table only first data remains constant?
+
+
+Managers –
+
+ID	NAME		SALARY
+1	Harpreet	20000
+2	Ravi		30000
+3	Vinay		10000
+4	Ravi		30000
+5	Harpreet	20000
+6	Vinay		10000
+7	Rajeev		40000
+8	Vinay		10000
+9	Ravi		30000
+10	Sanjay		50000
+
+Sol:
+
+#MYSQL SYNTAX
+
+DELETE 
+FROM MANAGERS M1
+WHERE M1.ID IN (SELECT M2.ID 
+	     	FROM MANAGERS M2
+	     	WHERE M1.ID<M2.ID AND M1.NAME=M2.NAME
+		);
