@@ -1,0 +1,57 @@
+#TIMESTAMPDIFF() MYSQL function
+
+->MySQL the TIMESTAMPDIFF() returns a value after subtracting a datetime expression from another.
+
+->It is not necessary that both the expression are of the same type. 
+  One may be a date and another is datetime. 
+  A date value is treated as a datetime with a default time part '00:00:00'. 
+  The unit for the result is given by another argument.
+
+  The unit should be one of the following : 
+  FRAC_SECOND (microseconds), SECOND, MINUTE, HOUR, DAY, WEEK, MONTH, QUARTER, or YEAR.
+
+#Syntax:
+TIMESTAMPDIFF(unit,datetime_expr1,datetime_expr2);
+
+#Arguments:
+
+Name		    	Description
+datetime_expr1	    A datetime expression.
+datetime_expr1	    A datetime expression.
+unit		    An unit, as described in the description.
+
+#Example:
+SELECT TIMESTAMPDIFF(MONTH,'2009-05-18','2009-07-29'); 
+
+
+
+Que: Find the Employees who hired in the Last n months.
+
+Finding the Employees who have been hire in the last n months. 
+Here we get desire output by using TIMESTAMPDIFF() mysql function.
+
+Employees –
+
+ID	FNAME	LNAME	GENDER	SALARY	HIREDATE
+1	Rajveer	Singh	Male	30000	2017/11/05
+2	Manveer	Singh	Male	50000	2017/11/05
+3	Ashutosh	Kumar	Male	40000	2017/12/12
+4	Ankita	Sharma	Female	45000	2017/12/15
+5	Vijay	Kumar	Male	50000	2018/01/12
+6	Dilip	Yadav	Male	25000	2018/02/26
+7	Jayvijay	Singh	Male	30000	2018/02/18
+8	Reenu	Kumari	Female	40000	2017/09/19
+9	Ankit	Verma	Male	25000	2018/04/04
+10	Harpreet	Singh	Male	50000	2017/10/10
+
+Sol:
+
+SELECT (*),TIMESTAMPDIFF(MONTH,HIREDATE,CURRENT_DATE()) AS DIFFMONTH
+FROM Employees
+WHERE TIMESTAMPDIFF(MONTH,HIREDATE,CURRENT_DATE()) BETWEEN 1 AND 5
+ORDER BY HIREDATE DESC;
+
+
+Note – Here in query 1 and 5 are indicates 1 to n months.which show the Employees who have
+       hired last 1 to 5 months. In this query DiffMonth is a extra column for our 
+       understanding which show the Nth months.
