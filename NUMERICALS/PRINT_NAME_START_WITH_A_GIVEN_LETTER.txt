@@ -1,0 +1,78 @@
+#		MySQL LEFT() Function:
+
+Example:
+Extract 3 characters from a string (starting from left):
+
+SELECT LEFT("SQL Tutorial", 3) AS ExtractString;
+
+#OUTPUT:
+ExtractString
+
+#Syntax
+LEFT(string, number_of_chars)
+
+#Parameter Values
+Parameter		Description
+string		   Required. The string to extract from
+number_of_chars	   Required. The number of characters to extract. If this parameter is larger 
+                   than the number of characters in string, this function will return string
+
+#	MySQL SUBSTRING() Function
+
+Example:
+Extract a substring from a string (start at position 5, extract 3 characters):
+
+SELECT SUBSTRING("SQL Tutorial", 5, 3) AS ExtractString;
+
+#OUTPUT:
+ExtractString
+Tut
+
+
+#Syntax:
+SUBSTRING(string, start, length)
+	
+	'OR'
+
+SUBSTRING(string FROM start FOR length)
+
+
+#Parameter Values
+Parameter			Description
+string			Required. The string to extract from
+start			Required. The start position. Can be both a positive or negative number. 
+                        If it is a positive number, this function extracts from the beginning of the string. 
+                        If it is a negative number, this function extracts from the end of the string
+length			Optional. The number of characters to extract. If omitted, the whole string will be returned 
+			(from the start position)
+
+
+#Que: Select all names that start with a given letter?
+
+Employees –
+
+ID	FNAME	LNAME	GENDER	SALARY	HIREDATE
+1	Rajveer	Singh	Male	30000	2010/11/05
+2	Manveer	Singh	Male	50000	2017/11/05
+3	Ashutosh	Kumar	Male	40000	2015/12/12
+
+4	Ankita	Sharma	Female	45000	2016/12/15
+5	Vijay	Kumar	Male	50000	2017/01/12
+6	Dilip	Yadav	Male	25000	2011/02/26
+7	Jayvijay	Singh	Male	30000	2012/02/18
+8	Reenu	Kumari	Female	40000	2013/09/19
+9	Ankit	Verma	Male	25000	2017/04/04
+10	Harpreet	Singh	Male	50000	2017/10/10
+
+#Sol:
+Select *
+From employees 
+Where Fname like 'A%';
+
+Select *
+From employees 
+Where left(FName, 1)='A';
+
+Select *
+From employees 
+Where substring(FName, 1, 1)='A'; 
