@@ -1,0 +1,88 @@
+Que: Sql query to find id of second highest score in a table with ids and scores?
+
+Sol: 
+
+#MYSQL SYNTAX: 
+
+SELECT id,score 
+FROM employees
+ORDER BY score DESC
+LIMIT 1 OFFSET 1;
+
+	'OR'
+
+SELECT id,score 
+FROM employees
+ORDER BY score DESC
+LIMIT 1,1;
+
+	'OR'
+
+SELECT id,score
+FROM employees
+WHERE score != (SELECT MAX(score) FROM employees)
+ORDER BY score DESC
+LIMIT 1;
+
+	'OR'
+
+SELECT id,score
+FROM employees
+WHERE score NOT IN (SELECT MAX(score) FROM employees)
+ORDER BY score DESC;
+LIMIT 1;
+
+	'OR'
+
+SELECT id,score
+FROM employees
+WHERE score < (SELECT MAX(score) FROM employees)
+ORDER BY score DESC;
+LIMIT 1;
+
+
+Que: Sql query to find id of second highest score in a table(only score not id)?
+
+Sol:
+
+SELECT MAX(score)
+FROM employees
+WHERE score !=(SELECT MAX(score) FROM employees);
+
+	'OR'
+
+SELECT score 
+FROM employees
+ORDER BY score DESC
+LIMIT 1 OFFSET 1;
+
+	'OR'
+
+SELECT score
+FROM employees
+WHERE score < (SELECT MAX(score) FROM employees)
+LIMIT 1;
+
+	'OR'
+
+SELECT score
+FROM employees
+WHERE score != (SELECT MAX(score) FROM employees)
+LIMIT 1;
+
+'OR'
+
+SELECT score
+FROM employees
+WHERE score NOT IN (SELECT MAX(score) FROM employees)
+LIMIT 1;
+
+
+
+
+
+
+
+
+
+
