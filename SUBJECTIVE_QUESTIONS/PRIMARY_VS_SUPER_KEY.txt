@@ -1,0 +1,10 @@
+S.NO	SUPER KEY								PRIMARY KEY
+1.	Super Key is an attribute (or set of attributes) 			Primary Key is a minimal set of attribute (or set of attributes) that 	that is used to uniquely identifies all attributes in a relation.	is used to uniquely identifies all attributes in a relation.									
+		
+2.	All super keys can’t be primary keys.					Primary key is a minimal super key.
+
+3.	Various super keys together makes the criteria to select 		We can choose any of the minimal candidate key to be a 				the candidate keys.							primary key.
+
+4.	In a relation, number of super keys are more than number of 		While in a relation, number of primary keys are less than 			primary keys.								number of super keys.
+
+5.	Super key’s attributes can contain NULL values.				Primary key’s attributes cannot contain NULL values.
