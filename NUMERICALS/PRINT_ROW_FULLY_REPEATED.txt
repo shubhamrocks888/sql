@@ -9,4 +9,4 @@ Sol:
 
 SELECT name, section FROM tbl
 GROUP BY name, section
-HAVING COUNT(*) > 1
+HAVING COUNT(*) > 1;
