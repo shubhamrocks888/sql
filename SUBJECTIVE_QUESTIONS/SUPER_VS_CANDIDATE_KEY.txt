@@ -1,0 +1,13 @@
+S.NO	SUPER KEY							CANDIDATE KEY
+
+1.	Super Key is an attribute (or set of attributes) that is	Candidate Key is a proper subset of a super key. 
+	used to uniquely identifies all attributes in a relation.	
+
+2.	All super keys can’t be candidate keys.				But all candidate keys are super keys.
+
+3.	Various super keys together makes the criteria to select the 	Various candidate keys together makes the criteria to select 				candidate keys.							the primary keys.
+
+4.	In a relation, number of super keys are more than number of 	While in a relation, number of candidate keys are less than
+	candidate keys.							number of super keys.
+
+5.	Super key’s attributes can contain NULL values.			Candidate key’s attributes can also contain NULL values.
