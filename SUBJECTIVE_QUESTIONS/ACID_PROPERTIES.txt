@@ -1,0 +1,56 @@
+
+
+Q:What is a transaction? 
+Ans: A Database Transaction is a set of database operations that must be treated as whole, 
+     means either all operations are executed or none of them.
+	
+     An example can be bank transaction from one account to another account. 
+     Either both debit and credit operations must be executed or none of them.
+
+
+Q:What are ACID properties?
+ACID (Atomicity, Consistency, Isolation, Durability) is a set of properties that guarantee 
+that database transactions are processed reliably.
+
+
+1.Atomicity:
+By this, we mean that either the entire transaction takes place at once or doesn’t happen at all.
+
+->It involves the following two operations.
+
+—Abort: If a transaction aborts, changes made to database are not visible.
+—Commit: If a transaction commits, changes made are visible.
+
+NOTE: Atomicity is also known as the ‘All or nothing rule’.
+
+
+2.Consistency:
+-> The database must be consistent before and after the transaction.
+
+This means that integrity constraints must be maintained so that the database is consistent before and 
+after the transaction. It refers to the correctness of a database. Referring to the example above,
+The total amount before and after the transaction must be maintained.
+Total before T occurs = 500 + 200 = 700.
+Total after T occurs = 400 + 300 = 700.
+Therefore, database is consistent. Inconsistency occurs in case T1 completes but T2 fails. As a result T is incomplete.
+
+
+3.Isolation:
+->Multiple transactions occur independently without interference.
+
+
+This property ensures that multiple transactions can occur concurrently without leading to the inconsistency of database state.
+Transactions occur independently without interference. Changes occurring in a particular transaction will not be visible to 
+any other transaction until that particular change in that transaction is written to memory or has been committed. 
+This property ensures that the execution of transactions concurrently will result in a state that is equivalent to a state 
+achieved these were executed serially in some order.
+
+
+4.Durability:
+->The changes of a successful transaction occurs even if the system failure occurs.
+
+This property ensures that once the transaction has completed execution, the updates and modifications to the database are 
+stored in and written to disk and they persist even if a system failure occurs. These updates now become permanent and are 
+stored in non-volatile memory. The effects of the transaction, thus, are never lost.
+
+ 
