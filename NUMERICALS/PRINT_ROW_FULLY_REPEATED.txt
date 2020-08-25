@@ -1,0 +1,12 @@
+Q. There is a table where only one row is fully repeated. Write a Query to find the Repeated row
+
+Name	Section
+abc	CS1
+bcd	CS2
+abc	CS1
+
+Sol:
+
+SELECT name, section FROM tbl
+GROUP BY name, section
+HAVING COUNT(*) > 1
