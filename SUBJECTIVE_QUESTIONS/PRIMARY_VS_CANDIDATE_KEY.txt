@@ -1,0 +1,13 @@
+S.NO	PRIMARY KEY								CANDIDATE KEY
+
+1.	Primary key is a minimal super key. 				While in a relation there can be more than one candidate key.
+	So there is one and only one primary key in a relation.	
+
+2.	Any attribute of Primary key can not contain NULL value.	While in Candidate key any attribute can contain NULL value.
+
+3.	Primary key can be optional to specify any relation.		But without candidate key there can’t be specified any relation.
+
+4.	Primary key specifies the important attribute for the 		Candidate specifies the key which can qualify for primary key.
+	relation.
+
+5.	Its confirmed that a primary key is a candidate key.		But Its confirmed that a candidate key can be a primary key.
