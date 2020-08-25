@@ -1,0 +1,88 @@
+#Difference between Clustered and Non-clustered index:
+
+1. Clustered Index :
+->Clustered index is created only when both the following conditions satisfy –
+
+->The data or file, that you are moving into secondary memory should be in sequential or sorted order.
+->There should be non key value, means the data should be unique.
+
+->Whenever you apply clustered indexing in a table, it will perform sorting in that table only. 
+->You can create only one clustered index in a table like primary key. 
+->Clustered index is as same as dictionary where the data is arranged by alphabetical order.
+
+
+#Example of Non-clustered Index –
+
+create table Student
+( Roll_No int primary key, 
+Name varchar(50), 
+Gender varchar(30), 
+Mob_No bigint );
+
+insert into Student 
+values (4, 'afzal', 'male', 9876543210 );
+
+insert into Student 
+values (3, 'sudhir', 'male', 9675432890 );
+
+insert into Student 
+values (5, 'zoya', 'female', 8976453201 );
+
+create nonclustered index NIX_FTE_Name
+on Student (Name ASC); 
+
+->Here, roll no is a primary key, hence there is automatically a clustered index.
+
+
+
+2. Non-Clustered Index :
+
+# If we want to apply non-clustered index in NAME column (in ascending order), 
+  then the new table will be created for that column.
+
+->Output before applying non-clustered index :
+
+	ROLL_NO	NAME	GENDER	MOB_NO
+	3	sudhir	male	9675432890
+	4	afzal	male	9876543210
+	5	zoya	female	8976453201
+
+
+->Output after applying non-clustered index :
+
+	NAME	ROW ADDRESS
+	Afzal	3452
+	Sudhir	5643
+	zoya	9876
+
+Row address is used because, if someone wants to search the data for sudhir, then by 
+using the row address he/she will directly go to that row address and can fetch the data directly.
+
+
+
+
+	#Difference between Clustered and Non-clustered index :
+
+CLUSTERED INDEX							NON-CLUSTERED INDEX
+
+1.Clustered index is faster.				Non-clustered index is slower.
+
+2.Clustered index requires less memory for operations.	Non-Clustered index requires more memory for operations.
+
+3.In clustered index, index is the main data.		In Non-Clustered index, index is the copy of data.
+
+4.A table can have only one clustered index.		A table can have multiple non-clustered index.
+
+5.Clustered index has inherent ability of storing data 	Non-Clustered index does not have inherent ability of storing data on the disk.
+on the disk.	
+
+6.Clustered index store pointers to block not data.	Non-Clustered index store both value and a pointer to actual row that holds data.
+
+7.In Clustered index leaf nodes are actual data itself.	In Non-Clustered index leaf nodes are not the actual data itself rather they only contains 							included columns.
+
+8.Clustered key defines order of data within table.	Index key defines order of data within index.
+
+
+10.A Clustered index is a type of index in which table	A Non-Clustered index is a special type of index in which logical order of index does not 	records are physically reordered to match the index.	match physical stored order of the rows on disk. 
+	
+
