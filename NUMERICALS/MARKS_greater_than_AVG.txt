@@ -1,0 +1,9 @@
+Q. There is a table which contains two column Student and Marks, you need to find all the students, 
+   whose marks are greater than average marks i.e. list of above average students?
+
+Sol:
+
+SELECT student,marks 
+FROM table
+WHERE marks >(SELECT AVG(marks) FROM table); 
+
